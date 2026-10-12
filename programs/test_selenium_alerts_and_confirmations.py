@@ -1,0 +1,21 @@
+import os
+import pytest
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+@pytest.fixture
+def driver():
+    instance = webdriver.Chrome()
+    yield instance
+    instance.quit()
+
+def test_practice(driver):
+    base_url = os.getenv("WAY2PYTHON_URL", "http://localhost:8080/way2python")
+    driver.get(f"{base_url}/practice.html")
+    driver.find_element(By.ID, "confirm-reset").click()
+    alert = WebDriverWait(driver, 5).until(EC.alert_is_present())
+    assert alert.text == "Reset all practice tasks?"
+    alert.accept()
+    assert driver.find_element(By.ID, "task-summary").text == "0 of 0 tasks complete"

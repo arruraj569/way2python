@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="description" content="Learn Python for automation, browser tests, API testing and AI. Original lessons, code examples, practice and linked references."><title>Python interview coding programs · Way2Python</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/style.css"><script src="assets/catalog.js" defer></script><script src="assets/app.js" defer></script></head>
+<body data-root="" data-page="interview"><a class="skip-link" href="#main">Skip to content</a>
+<aside class="sidebar" id="sidebar"><a class="brand" href="index.html"><span class="brand-icon">p<sup>2</sup></span><span>way2python<span class="brand-dot">.</span></span></a><div class="edition">THE PYTHON LEARNING LIBRARY</div>
+<nav aria-label="Main navigation"><a class="nav-link " href="start.html" ><span aria-hidden="true">○</span>Start from zero</a><a class="nav-link " href="index.html" ><span aria-hidden="true">⌂</span>Overview</a><a class="nav-link " href="index.html#topic-index" ><span aria-hidden="true">☷</span>Topic index</a><a class="nav-link " href="library.html" ><span aria-hidden="true">▦</span>All lessons<small data-total>173</small></a><a class="nav-link " href="video.html" ><span aria-hidden="true">▷</span>Video chapters</a><a class="nav-link active" href="interview.html" aria-current=page><span aria-hidden="true">?</span>Tricky & interview</a><a class="nav-link " href="design-patterns.html" ><span aria-hidden="true">⬡</span>Design patterns</a><a class="nav-link " href="roadmap.html" ><span aria-hidden="true">◇</span>Learning path</a><a class="nav-link " href="library.html?saved=1" ><span aria-hidden="true">♧</span>Saved lessons<small data-saved>0</small></a><div class="nav-caption">PRACTICE & RESOURCES</div><a class="nav-link " href="practice.html"><span aria-hidden="true">⌘</span>Browser practice lab</a><a class="nav-link" href="downloads.html"><span aria-hidden="true">{ }</span>Runnable practice kit</a><a class="nav-link " href="resources.html"><span aria-hidden="true">↗</span>Reference library</a><div class="nav-caption">EXPLORE TRACKS</div><a class="nav-link" href="library.html?group=basics"><span class="topic-dot green" aria-hidden="true"></span>Python fundamentals</a><a class="nav-link" href="library.html?group=playwright"><span class="topic-dot purple" aria-hidden="true"></span>Playwright</a><a class="nav-link" href="library.html?group=selenium"><span class="topic-dot amber" aria-hidden="true"></span>Selenium</a><a class="nav-link" href="library.html?group=api"><span class="topic-dot blue" aria-hidden="true"></span>API testing</a><a class="nav-link" href="library.html?group=data"><span class="topic-dot pink" aria-hidden="true"></span>NumPy, pandas &amp; AI</a></nav>
+<div class="sidebar-bottom"><span class="offline-dot" aria-hidden="true"></span><div><strong>Your local learning library</strong><small>Read. Practice. Make progress.</small><span class="sidebar-progress" data-progress>0 lessons completed</span></div></div></aside>
+<div class="workspace"><header class="topbar"><button class="menu-toggle" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="false">☰</button><div class="breadcrumb"><a href="index.html">Library</a><span>/</span><span class="crumb-label">Coding interviews</span></div><a class="quick-search" href="library.html"><span aria-hidden="true">⌕</span>Search the library<kbd>/</kbd></a><span class="top-badge">PYTHON, ONE CONCEPT AT A TIME</span></header>
+<main id="main"><section class="page-intro"><div class="eyebrow">WRITE THE PROGRAM. EXPLAIN THE CHOICE.</div><h1>Interview coding programs.<br><em>From strings to search.</em></h1><p>Sixteen original exercises with complete solutions, expected outputs, complexity notes, and follow-up variations. Read the prompt and try your own solution before opening the answer.</p></section><section class="coding-page"><div class="callout"><h2>How to use these exercises</h2><p>All solutions use the standard library. Download a .py file and run it with Python, or save the complete code in the shown filename. Test empty inputs, duplicates and boundaries; explain assumptions before optimizing.</p><a class="button" href="downloads/way2python-interview-coding.zip" download>Download all 16 coding programs ↓</a><a class="button" href="start.html">Start from zero →</a></div><nav class="coding-index" aria-label="Coding exercises"><a href="#reverse-string">01 · Reverse a string</a><a href="#palindrome">02 · Check a normalized palindrome</a><a href="#anagram">03 · Check whether two texts are anagrams</a><a href="#word-frequency">04 · Count word frequencies</a><a href="#remove-duplicates">05 · Remove duplicates and preserve order</a><a href="#first-nonrepeating">06 · Find the first non-repeating character</a><a href="#fibonacci">07 · Generate the first n Fibonacci values</a><a href="#prime-number">08 · Test a number for primality</a><a href="#factorial">09 · Calculate factorial with input validation</a><a href="#two-sum">10 · Find two indices whose values sum to a target</a><a href="#second-largest">11 · Find the second-largest distinct value</a><a href="#flatten-nested-list">12 · Flatten nested lists</a><a href="#binary-search">13 · Search a sorted sequence with binary search</a><a href="#balanced-brackets">14 · Check balanced brackets with a stack</a><a href="#missing-number">15 · Find one missing number from 0 through n</a><a href="#merge-sorted">16 · Merge two sorted lists with two pointers</a></nav><article class="coding-exercise" id="reverse-string"><div class="eyebrow">CODING EXERCISE 01</div><h2>Reverse a string</h2><p>Return the characters of a string in reverse order. First explain slicing, then describe a loop-based alternative.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>reverse_string.py</span><a class="button" href="coding-programs/reverse_string.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>def reverse_text(text):
+    return text[::-1]
+
+print(reverse_text(&quot;Python&quot;))
+print(reverse_text(&quot;&quot;))</code></pre></div><p>Run: <code>python reverse_string.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>nohtyP
+(the second output is an empty line)</pre></div><p>The negative slice step visits the string from its end. The result is a new string, because strings are immutable.</p><p><strong>Complexity:</strong> O(n) time and O(n) result space.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Implement a version with a loop and join; avoid repeatedly concatenating an ever-growing string.</p></div></div></details></article><article class="coding-exercise" id="palindrome"><div class="eyebrow">CODING EXERCISE 02</div><h2>Check a normalized palindrome</h2><p>Ignore spaces and punctuation and compare text without case differences. State this normalization rule before coding.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>palindrome.py</span><a class="button" href="coding-programs/palindrome.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>def palindrome(text):
+    normalized = &quot;&quot;.join(character for character in text.casefold() if character.isalnum())
+    return normalized == normalized[::-1]
+
+print(palindrome(&quot;Never odd or even&quot;))
+print(palindrome(&quot;Python&quot;))</code></pre></div><p>Run: <code>python palindrome.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>True
+False</pre></div><p>casefold handles case normalization, isalnum selects letters/digits, and comparison with the reverse checks the rule. Empty normalized input is true under this definition.</p><p><strong>Complexity:</strong> O(n) time and O(n) extra space.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Use two pointers on the original string, then discuss whether Unicode normalization changes your assumptions.</p></div></div></details></article><article class="coding-exercise" id="anagram"><div class="eyebrow">CODING EXERCISE 03</div><h2>Check whether two texts are anagrams</h2><p>Compare the frequency of each normalized letter. Here whitespace and punctuation are ignored.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>anagram.py</span><a class="button" href="coding-programs/anagram.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>from collections import Counter
+def letters(text):
+    return Counter(character for character in text.casefold() if character.isalpha())
+def anagrams(first, second):
+    return letters(first) == letters(second)
+
+print(anagrams(&quot;Listen&quot;, &quot;Silent&quot;))
+print(anagrams(&quot;hello&quot;, &quot;world&quot;))</code></pre></div><p>Run: <code>python anagram.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>True
+False</pre></div><p>Counter stores the occurrence count for each character. Equality checks both which characters occur and how many times they occur.</p><p><strong>Complexity:</strong> Expected O(n + m) time and O(k) counter space, where k is the number of distinct characters.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Explain why comparing only sets would incorrectly accept some repeated-letter inputs.</p></div></div></details></article><article class="coding-exercise" id="word-frequency"><div class="eyebrow">CODING EXERCISE 04</div><h2>Count word frequencies</h2><p>Split whitespace-separated text, ignore case, and produce a count per word. Punctuation is retained in this simple tokenizer.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>word_frequency.py</span><a class="button" href="coding-programs/word_frequency.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>def frequencies(text):
+    counts = {}
+    for word in text.casefold().split():
+        counts[word] = counts.get(word, 0) + 1
+    return counts
+
+print(frequencies(&quot;api UI api&quot;))</code></pre></div><p>Run: <code>python word_frequency.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>{&#x27;api&#x27;: 2, &#x27;ui&#x27;: 1}</pre></div><p>get supplies zero for the first occurrence. Later occurrences increment the same word’s count. State your tokenization assumptions before extending the code.</p><p><strong>Complexity:</strong> Expected O(n) processing time and O(k) count space.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Adapt the result to report the three most common failure terms with a deterministic tie-breaker.</p></div></div></details></article><article class="coding-exercise" id="remove-duplicates"><div class="eyebrow">CODING EXERCISE 05</div><h2>Remove duplicates and preserve order</h2><p>Keep the first appearance of each hashable value rather than sorting the input or losing its order.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>remove_duplicates.py</span><a class="button" href="coding-programs/remove_duplicates.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>def unique_in_order(values):
+    seen, result = set(), []
+    for value in values:
+        if value not in seen:
+            seen.add(value)
+            result.append(value)
+    return result
+
+print(unique_in_order([3, 1, 3, 2, 1]))</code></pre></div><p>Run: <code>python remove_duplicates.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>[3, 1, 2]</pre></div><p>The set handles membership; the list records first appearances. The input is not modified. The values must support hashing.</p><p><strong>Complexity:</strong> Expected O(n) time and O(k) extra space.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Handle dictionaries by a declared key such as user ID instead of trying to put the whole dictionary in a set.</p></div></div></details></article><article class="coding-exercise" id="first-nonrepeating"><div class="eyebrow">CODING EXERCISE 06</div><h2>Find the first non-repeating character</h2><p>Return the earliest character whose count is one, or None if no such character exists.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>first_nonrepeating.py</span><a class="button" href="coding-programs/first_nonrepeating.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>from collections import Counter
+def first_unique(text):
+    counts = Counter(text)
+    return next((character for character in text if counts[character] == 1), None)
+
+print(first_unique(&quot;swiss&quot;))
+print(first_unique(&quot;aabb&quot;))</code></pre></div><p>Run: <code>python first_nonrepeating.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>w
+None</pre></div><p>The first pass counts; the second preserves the text’s original order. A default on next provides a defined result for the no-match case.</p><p><strong>Complexity:</strong> Expected O(n) time and O(k) counter space.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Decide whether uppercase and lowercase characters should be counted together and test that rule.</p></div></div></details></article><article class="coding-exercise" id="fibonacci"><div class="eyebrow">CODING EXERCISE 07</div><h2>Generate the first n Fibonacci values</h2><p>Use iteration to generate a sequence starting with 0 and 1. Reject negative or non-integer lengths.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>fibonacci.py</span><a class="button" href="coding-programs/fibonacci.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>def fibonacci(length):
+    if type(length) is not int or length &lt; 0:
+        raise ValueError(&quot;length must be a nonnegative integer&quot;)
+    first, second = 0, 1
+    result = []
+    for _ in range(length):
+        result.append(first)
+        first, second = second, first + second
+    return result
+
+print(fibonacci(8))
+print(fibonacci(0))</code></pre></div><p>Run: <code>python fibonacci.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>[0, 1, 1, 2, 3, 5, 8, 13]
+[]</pre></div><p>The tuple assignment uses the previous pair to compute the next pair before changing either name. Exact int checking deliberately rejects booleans.</p><p><strong>Complexity:</strong> O(n) iterations and O(n) result space, ignoring growing integer bit-cost.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Write a generator yielding values one at a time and compare its memory use.</p></div></div></details></article><article class="coding-exercise" id="prime-number"><div class="eyebrow">CODING EXERCISE 08</div><h2>Test a number for primality</h2><p>For an integer, return whether it has no divisors other than 1 and itself. Handle values below 2.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>prime_number.py</span><a class="button" href="coding-programs/prime_number.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>from math import isqrt
+def is_prime(number):
+    if number &lt; 2:
+        return False
+    for divisor in range(2, isqrt(number) + 1):
+        if number % divisor == 0:
+            return False
+    return True
+
+print(is_prime(29), is_prime(25), is_prime(1))</code></pre></div><p>Run: <code>python prime_number.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>True False False</pre></div><p>A composite integer has a divisor at or below its square root. Including the endpoint is necessary to reject perfect squares.</p><p><strong>Complexity:</strong> O(√n) trial divisions and O(1) extra space, treating arithmetic operations as constant cost.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Skip even candidate divisors after separately handling two; test perfect squares.</p></div></div></details></article><article class="coding-exercise" id="factorial"><div class="eyebrow">CODING EXERCISE 09</div><h2>Calculate factorial with input validation</h2><p>Return n! for an exact nonnegative integer; explain why 0! is one and why bool requires a deliberate decision.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>factorial.py</span><a class="button" href="coding-programs/factorial.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>def factorial(number):
+    if type(number) is not int or number &lt; 0:
+        raise ValueError(&quot;use a nonnegative integer&quot;)
+    result = 1
+    for value in range(2, number + 1):
+        result *= value
+    return result
+
+print(factorial(0), factorial(5))</code></pre></div><p>Run: <code>python factorial.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>1 120</pre></div><p>Start with the multiplication identity one and include number in the range. Exact integer validation rejects booleans as well as fractional and negative inputs.</p><p><strong>Complexity:</strong> O(n) multiplications and one accumulator, ignoring growing integer bit-cost.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Compare the iterative and recursive implementations, including their stack use and invalid inputs.</p></div></div></details></article><article class="coding-exercise" id="two-sum"><div class="eyebrow">CODING EXERCISE 10</div><h2>Find two indices whose values sum to a target</h2><p>Return two different indices, including when equal values occur at different positions. Return None if no pair exists.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>two_sum.py</span><a class="button" href="coding-programs/two_sum.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>def two_sum(values, target):
+    seen = {}
+    for index, value in enumerate(values):
+        needed = target - value
+        if needed in seen:
+            return seen[needed], index
+        seen[value] = index
+    return None
+
+print(two_sum([2, 7, 11, 15], 9))
+print(two_sum([3, 3], 6))
+print(two_sum([3], 6))</code></pre></div><p>Run: <code>python two_sum.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>(0, 1)
+(0, 1)
+None</pre></div><p>Check for the complement before storing the current index so a value cannot pair with itself. Earlier duplicates remain eligible as different indices.</p><p><strong>Complexity:</strong> Expected O(n) time and O(n) dictionary space.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Return every unique value pair and explain how that changes duplicate handling.</p></div></div></details></article><article class="coding-exercise" id="second-largest"><div class="eyebrow">CODING EXERCISE 11</div><h2>Find the second-largest distinct value</h2><p>Find the second-largest distinct integer without sorting. Return None if there are fewer than two distinct values.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>second_largest.py</span><a class="button" href="coding-programs/second_largest.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>def second_largest(values):
+    largest = second = None
+    for value in values:
+        if largest is None or value &gt; largest:
+            second, largest = largest, value
+        elif value != largest and (second is None or value &gt; second):
+            second = value
+    return second
+
+print(second_largest([5, 5, 3, 2]))
+print(second_largest([-4, -2, -3]))
+print(second_largest([5, 5]))</code></pre></div><p>Run: <code>python second_largest.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>3
+-3
+None</pre></div><p>Track two distinct candidates and exclude values equal to the current maximum. None avoids inventing an unsuitable zero sentinel for negative inputs.</p><p><strong>Complexity:</strong> O(n) time and O(1) auxiliary space.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Clarify whether second-largest means distinct value or second position after sorting; they differ for duplicates.</p></div></div></details></article><article class="coding-exercise" id="flatten-nested-list"><div class="eyebrow">CODING EXERCISE 12</div><h2>Flatten nested lists</h2><p>Return leaf values in order from nested Python lists. Other types, including tuples, are treated as leaf values by this contract.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>flatten_nested_list.py</span><a class="button" href="coding-programs/flatten_nested_list.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>def flatten(values):
+    result = []
+    def visit(items):
+        for item in items:
+            if isinstance(item, list):
+                visit(item)
+            else:
+                result.append(item)
+    visit(values)
+    return result
+
+print(flatten([1, [2, [3], []], 4]))</code></pre></div><p>Run: <code>python flatten_nested_list.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>[1, 2, 3, 4]</pre></div><p>The recursive helper traverses each list and appends leaves to one shared result, avoiding repeated concatenation of intermediate results. Very deep nesting can exceed recursion limits.</p><p><strong>Complexity:</strong> O(n) visited nodes and O(d) call-stack depth, plus the output list.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Replace recursion with an explicit stack while preserving order; handle cyclic input as a separate contract decision.</p></div></div></details></article><article class="coding-exercise" id="binary-search"><div class="eyebrow">CODING EXERCISE 13</div><h2>Search a sorted sequence with binary search</h2><p>Return an index for the target in an ascending sorted sequence, or None. This program can return any matching index for duplicates.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>binary_search.py</span><a class="button" href="coding-programs/binary_search.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>def binary_search(values, target):
+    low, high = 0, len(values) - 1
+    while low &lt;= high:
+        middle = (low + high) // 2
+        if values[middle] == target:
+            return middle
+        if values[middle] &lt; target:
+            low = middle + 1
+        else:
+            high = middle - 1
+    return None
+
+print(binary_search([1, 3, 5, 7, 9], 7))
+print(binary_search([1, 3, 5, 7, 9], 4))</code></pre></div><p>Run: <code>python binary_search.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>3
+None</pre></div><p>Each comparison removes roughly half the remaining search interval. Moving past middle is essential so an unsuccessful iteration still makes progress.</p><p><strong>Complexity:</strong> O(log n) comparisons and O(1) auxiliary space for a random-access sequence.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Adapt the algorithm to return the first matching index when duplicates are present.</p></div></div></details></article><article class="coding-exercise" id="balanced-brackets"><div class="eyebrow">CODING EXERCISE 14</div><h2>Check balanced brackets with a stack</h2><p>Validate nesting of (), [] and {} in a raw character sequence. Non-bracket characters are ignored; this is not a full programming-language parser.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>balanced_brackets.py</span><a class="button" href="coding-programs/balanced_brackets.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>def balanced(text):
+    expected = {&quot;)&quot;: &quot;(&quot;, &quot;]&quot;: &quot;[&quot;, &quot;}&quot;: &quot;{&quot;}
+    stack = []
+    for character in text:
+        if character in expected.values():
+            stack.append(character)
+        elif character in expected:
+            if not stack or stack.pop() != expected[character]:
+                return False
+    return not stack
+
+print(balanced(&quot;{[()]}&quot;))
+print(balanced(&quot;([)]&quot;))
+print(balanced(&quot;((&quot;))</code></pre></div><p>Run: <code>python balanced_brackets.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>True
+False
+False</pre></div><p>The most recent opening bracket must match the next closing bracket. An empty stack handles excess closes, and the final emptiness check handles excess opens.</p><p><strong>Complexity:</strong> O(n) time and O(n) worst-case stack space.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Return the first error position rather than just a boolean, with a defined result for leftover opening brackets.</p></div></div></details></article><article class="coding-exercise" id="missing-number"><div class="eyebrow">CODING EXERCISE 15</div><h2>Find one missing number from 0 through n</h2><p>The input has n distinct integers from 0 through n, with exactly one absent value. State these assumptions: the sum trick alone does not validate them.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>missing_number.py</span><a class="button" href="coding-programs/missing_number.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>def missing_number(values):
+    number = len(values)
+    expected_total = number * (number + 1) // 2
+    return expected_total - sum(values)
+
+print(missing_number([0, 1, 3, 4]))
+print(missing_number([]))</code></pre></div><p>Run: <code>python missing_number.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>2
+0</pre></div><p>The complete sequence’s sum minus the supplied sum is the missing value only under the stated uniqueness/range contract. Empty input means zero is missing from the range containing only zero.</p><p><strong>Complexity:</strong> O(n) summation time and O(1) auxiliary space, ignoring integer bit-cost.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Add explicit range and uniqueness validation and discuss its additional memory cost.</p></div></div></details></article><article class="coding-exercise" id="merge-sorted"><div class="eyebrow">CODING EXERCISE 16</div><h2>Merge two sorted lists with two pointers</h2><p>Combine two ascending sorted lists into a new ascending list while retaining duplicate values.</p><details class="answer-panel"><summary>Reveal the complete solution and explanation</summary><div class="coding-solution"><div class="program-download"><span>merge_sorted.py</span><a class="button" href="coding-programs/merge_sorted.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>def merge_sorted(left, right):
+    first = second = 0
+    result = []
+    while first &lt; len(left) and second &lt; len(right):
+        if left[first] &lt;= right[second]:
+            result.append(left[first])
+            first += 1
+        else:
+            result.append(right[second])
+            second += 1
+    result.extend(left[first:])
+    result.extend(right[second:])
+    return result
+
+print(merge_sorted([1, 3, 5], [2, 4]))
+print(merge_sorted([], [1, 1]))</code></pre></div><p>Run: <code>python merge_sorted.py</code></p><div class="output"><span>EXPECTED OUTPUT</span><pre>[1, 2, 3, 4, 5]
+[1, 1]</pre></div><p>Each pointer advances only through its own list. When one side is exhausted, append the remaining sorted tail. The input lists remain unchanged.</p><p><strong>Complexity:</strong> O(n + m) time and O(n + m) result space.</p><div class="tricky-challenge"><strong>Interview follow-up</strong><p>Explain why sorting the concatenation is simpler but has a different general time bound.</p></div></div></details></article></section></main><footer><a class="footer-brand" href="index.html">way2python.</a><span>Learn deeply. Automate confidently.</span><a href="resources.html">Sources & credits ↗</a><a href="downloads.html">Take it with you ↗</a><small>Original lessons · References checked 12 October 2026</small></footer></div><div class="toast" role="status" aria-live="polite"></div></body></html>

@@ -1,0 +1,5 @@
+record = ([1], "stable")
+record[0].append(2)
+print(record)
+print(type(("one")).__name__)
+print(type(("one",)).__name__)

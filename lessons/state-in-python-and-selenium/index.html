@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="description" content="State puts behavior for each state into a separate object. The context delegates to its current state and changes that state during a transition."><title>State in Python and Selenium · Way2Python</title><link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../../assets/style.css"><script src="../../assets/catalog.js" defer></script><script src="../../assets/app.js" defer></script></head>
+<body data-root="../../" data-page="lesson"><a class="skip-link" href="#main">Skip to content</a>
+<aside class="sidebar" id="sidebar"><a class="brand" href="../../index.html"><span class="brand-icon">p<sup>2</sup></span><span>way2python<span class="brand-dot">.</span></span></a><div class="edition">THE PYTHON LEARNING LIBRARY</div>
+<nav aria-label="Main navigation"><a class="nav-link " href="../../start.html" ><span aria-hidden="true">○</span>Start from zero</a><a class="nav-link " href="../../index.html" ><span aria-hidden="true">⌂</span>Overview</a><a class="nav-link " href="../../index.html#topic-index" ><span aria-hidden="true">☷</span>Topic index</a><a class="nav-link " href="../../library.html" ><span aria-hidden="true">▦</span>All lessons<small data-total>173</small></a><a class="nav-link " href="../../video.html" ><span aria-hidden="true">▷</span>Video chapters</a><a class="nav-link " href="../../interview.html" ><span aria-hidden="true">?</span>Tricky & interview</a><a class="nav-link " href="../../design-patterns.html" ><span aria-hidden="true">⬡</span>Design patterns</a><a class="nav-link " href="../../roadmap.html" ><span aria-hidden="true">◇</span>Learning path</a><a class="nav-link " href="../../library.html?saved=1" ><span aria-hidden="true">♧</span>Saved lessons<small data-saved>0</small></a><div class="nav-caption">PRACTICE & RESOURCES</div><a class="nav-link " href="../../practice.html"><span aria-hidden="true">⌘</span>Browser practice lab</a><a class="nav-link" href="../../downloads.html"><span aria-hidden="true">{ }</span>Runnable practice kit</a><a class="nav-link " href="../../resources.html"><span aria-hidden="true">↗</span>Reference library</a><div class="nav-caption">EXPLORE TRACKS</div><a class="nav-link" href="../../library.html?group=basics"><span class="topic-dot green" aria-hidden="true"></span>Python fundamentals</a><a class="nav-link" href="../../library.html?group=playwright"><span class="topic-dot purple" aria-hidden="true"></span>Playwright</a><a class="nav-link" href="../../library.html?group=selenium"><span class="topic-dot amber" aria-hidden="true"></span>Selenium</a><a class="nav-link" href="../../library.html?group=api"><span class="topic-dot blue" aria-hidden="true"></span>API testing</a><a class="nav-link" href="../../library.html?group=data"><span class="topic-dot pink" aria-hidden="true"></span>NumPy, pandas &amp; AI</a></nav>
+<div class="sidebar-bottom"><span class="offline-dot" aria-hidden="true"></span><div><strong>Your local learning library</strong><small>Read. Practice. Make progress.</small><span class="sidebar-progress" data-progress>0 lessons completed</span></div></div></aside>
+<div class="workspace"><header class="topbar"><button class="menu-toggle" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="false">☰</button><div class="breadcrumb"><a href="../../index.html">Library</a><span>/</span><span class="crumb-label">Python &amp; Selenium design patterns</span></div><a class="quick-search" href="../../library.html"><span aria-hidden="true">⌕</span>Search the library<kbd>/</kbd></a><span class="top-badge">PYTHON, ONE CONCEPT AT A TIME</span></header>
+<main id="main"><div class="article-layout"><article class="article-main" data-current-lesson="state-in-python-and-selenium"><div class="article-meta"><span class="pill purple">Python &amp; Selenium design patterns</span><span>Intermediate · 16 min read + practice</span></div><h1 class="article-title">State in Python and Selenium</h1><p class="article-deck">Behavioral patterns · Complete program, tricky exercise, and interview answers</p><div class="article-actions"><button class="button" data-save="state-in-python-and-selenium" aria-pressed="false">♡ Save lesson</button><button class="button primary" data-complete="state-in-python-and-selenium" aria-pressed="false">Mark complete ✓</button></div><div class="beginner-reminder"><strong>First time writing Python?</strong><a href="../../start.html">Start from zero →</a><a href="../../start.html#glossary">Read the punctuation guide ↗</a></div><div class="lesson-content"><section id="idea"><h2>The idea</h2><p>State puts behavior for each state into a separate object. The context delegates to its current state and changes that state during a transition.</p></section><section id="daily-use" class="design-usage"><div class="eyebrow">Behavioral patterns · Situational</div><h2>Use it in daily work.</h2><p>Represent signed-out and signed-in behavior during a daily login/logout journey instead of spreading state-name checks through many methods.</p><h3>Know the tradeoff.</h3><p>A model’s state is not proof of the browser’s state. Observe the actual page before updating the model, and define allowed transitions. A small enum may be enough for simple cases.</p><a class="text-link" href="../../design-patterns.html#choose">Compare patterns and choose a starting point →</a></section>
+<section id="example"><h2>A complete program to try.</h2><div class="run-note"><strong>BEFORE YOU RUN</strong><p>Save the entire program in <code>state_in_python_and_selenium.py</code>. Open a terminal in that file’s folder and activate your project’s virtual environment. Commands go in the terminal; the program goes in the .py file.</p><p>This program uses only Python’s standard library; no extra package is needed.</p><p>Run: <code>python state_in_python_and_selenium.py</code></p><p>On macOS/Linux outside a virtual environment use python3; on Windows use py. The <a href="../../start.html">beginner guide</a> explains both.</p></div><div class="program-download"><span>state_in_python_and_selenium.py</span><a class="button" href="../../programs/state_in_python_and_selenium.py" download>Download program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>class SignedOut:
+    def label(self):
+        return &quot;signed out&quot;
+    def login(self, session):
+        session.state = SignedIn()
+
+class SignedIn:
+    def label(self):
+        return &quot;signed in&quot;
+    def login(self, session):
+        raise ValueError(&quot;already signed in&quot;)
+
+class Session:
+    def __init__(self):
+        self.state = SignedOut()
+    def login(self):
+        self.state.login(self)
+
+session = Session()
+print(session.state.label())
+session.login()
+print(session.state.label())
+try:
+    session.login()
+except ValueError as error:
+    print(error)</code></pre></div><div class="output"><span>EXPECTED RESULT</span><pre>signed out
+signed in
+already signed in</pre></div></section>
+<section id="walkthrough"><h2>Read it step by step.</h2><p class="source-intro">Read from the top. A function or class body does not run just because you defined it; look for the call, or let pytest call a test function.</p><ol class="walkthrough"><li><strong>Line 1: </strong>Define the class SignedOut. It groups related data and methods; constructing an instance and calling methods happens later.</li><li><strong>Line 7: </strong>Define the class SignedIn. It groups related data and methods; constructing an instance and calling methods happens later.</li><li><strong>Line 13: </strong>Define the class Session. It groups related data and methods; constructing an instance and calling methods happens later.</li><li><strong>Line 19: </strong>Bind session to the result of Session(). Assignment gives a value a name; it does not automatically copy a nested object.</li><li><strong>Line 20: </strong>Print session.state.label() to the terminal. print displays values and returns None.</li><li><strong>Line 21: </strong>Call session.login with the shown arguments. Read its result contract before assuming a successful call means the behavior was correct.</li><li><strong>Line 22: </strong>Print session.state.label() to the terminal. print displays values and returns None.</li><li><strong>Line 23: </strong>Run the try block. Specific except handlers deal with matching failures; finally performs its cleanup regardless of success.</li></ol></section><section id="selenium-example"><div class="eyebrow">REAL BROWSER COMPANION</div><h2>Apply it with Selenium.</h2><p>This is a complete Chrome program for the local practice lab. It uses explicit waits and quits its owned driver on exit. The first Python program above teaches the pattern without requiring a browser.</p><div class="run-note"><strong>BEFORE YOU RUN</strong><p>Install Python 3.12 or newer and Chrome. Activate a virtual environment, then run <code>python -m pip install selenium</code>. Keep <a href="../../practice.html">http://localhost:8080/way2python/practice.html</a> running.</p><p>Save all the code as <code>selenium_state_in_python_and_selenium.py</code>, then run <code>python selenium_state_in_python_and_selenium.py</code>. Selenium Manager may need internet to resolve a matching driver. WAY2PYTHON_URL can override the site address.</p><p>The Abstract Factory example defaults to Chrome; its optional Firefox family needs installed Firefox and WAY2PYTHON_BROWSER=firefox. Other companions use Chrome.</p></div><div class="program-download"><span>selenium_state_in_python_and_selenium.py</span><a class="button" href="../../programs/selenium_state_in_python_and_selenium.py" download>Download Selenium program ↓</a></div><div class="code-block"><div class="code-bar"><span>COMPLETE SELENIUM PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>&quot;&quot;&quot;Run against the local Way2Python lab with Selenium and installed Chrome.&quot;&quot;&quot;
+import os
+from contextlib import contextmanager
+from copy import deepcopy
+from dataclasses import dataclass
+from urllib.parse import urlsplit
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait, Select
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+
+BASE_URL = os.getenv(&quot;WAY2PYTHON_URL&quot;, &quot;http://localhost:8080/way2python&quot;).rstrip(&quot;/&quot;)
+
+def create_driver():
+    options = webdriver.ChromeOptions()
+    options.add_argument(&quot;--headless=new&quot;)
+    return webdriver.Chrome(options=options)
+
+@contextmanager
+def browser_session(factory=create_driver):
+    driver = factory()
+    try:
+        driver.get(BASE_URL + &quot;/practice.html&quot;)
+        yield driver
+    finally:
+        driver.quit()
+
+def control(driver, selector):
+    return WebDriverWait(driver, 5).until(
+        EC.element_to_be_clickable((By.CSS_SELECTOR, selector)))
+
+def fill(driver, selector, value):
+    field = control(driver, selector)
+    field.clear()
+    field.send_keys(value)
+
+def wait_text(driver, selector, expected):
+    WebDriverWait(driver, 5).until(
+        lambda current: current.find_element(By.CSS_SELECTOR, selector).text == expected)
+    return driver.find_element(By.CSS_SELECTOR, selector).text
+
+def login(driver, email=&quot;learner@example.test&quot;, password=&quot;python123&quot;):
+    fill(driver, &quot;#email&quot;, email)
+    fill(driver, &quot;#password&quot;, password)
+    control(driver, &quot;#login-form button[type=submit]&quot;).click()
+
+def save_profile(driver, name, track=&quot;selenium&quot;):
+    fill(driver, &quot;#display-name&quot;, name)
+    Select(control(driver, &quot;#track-select&quot;)).select_by_value(track)
+    control(driver, &quot;#save-profile&quot;).click()
+
+
+class SignedOut:
+    label = &quot;signed out&quot;
+    def sign_in(self, session):
+        login(session.driver)
+        wait_text(session.driver, &quot;#login-status&quot;, &quot;Welcome, learner!&quot;)
+        session.state = SignedIn()
+
+class SignedIn:
+    label = &quot;signed in&quot;
+    def sign_in(self, session):
+        raise ValueError(&quot;already signed in&quot;)
+    def sign_out(self, session):
+        control(session.driver, &quot;#sign-out&quot;).click()
+        wait_text(session.driver, &quot;#login-status&quot;, &quot;Not signed in&quot;)
+        session.state = SignedOut()
+
+class Session:
+    def __init__(self, driver):
+        self.driver, self.state = driver, SignedOut()
+    def sign_in(self):
+        self.state.sign_in(self)
+    def sign_out(self):
+        self.state.sign_out(self)
+
+def main():
+    with browser_session() as driver:
+        session = Session(driver)
+        session.sign_in()
+        assert session.state.label == &quot;signed in&quot;
+        assert driver.find_element(By.ID, &quot;login-status&quot;).text == &quot;Welcome, learner!&quot;
+        session.sign_out()
+        assert session.state.label == &quot;signed out&quot;
+        assert driver.find_element(By.ID, &quot;login-status&quot;).text == &quot;Not signed in&quot;
+    print(&#x27;Observed login and logout state transitions passed&#x27;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></div><div class="output"><span>EXPECTED RESULT WHEN RUN LOCALLY</span><pre>Observed login and logout state transitions passed</pre></div><details class="answer-panel"><summary>Read the Selenium program step by step</summary><ol><li>Imports provide browser creation, locators, waits and select controls.</li><li>browser_session creates a fresh browser, opens the local lab, and quits in finally. Factory and template examples own this context inside their workflow.</li><li>fill clears a field before typing. wait_text polls for the exact observed result instead of pausing for an arbitrary delay.</li><li>The pattern’s classes or functions sit between these helpers and main. Follow main to see the actual journey and assertions.</li><li>The final message prints only after assertions succeed and the owned browser closes.</li></ol></details><p class="source-note">Verification: the Python rehearsals and tricky programs were executed. Selenium companions were checked for syntax; the local lab was checked in the supported browser. Running these Python-driven browser programs remains a local practice step.</p></section>
+<section id="practice" class="practice-task"><span class="eyebrow">YOUR TURN</span><h2>Make it yours.</h2><p>Modify the data or add a second implementation. Run both versions and explain which responsibility changed.</p><p class="practice-hint">Run one variation, predict its result, and explain any error before marking this lesson complete.</p></section>
+<section id="tricky"><div class="eyebrow">TRICKY PROGRAM · PREDICT THE OUTPUT</div><h2>Pause. What will this print?</h2><p>This smaller program isolates a concept from this lesson. Predict the output before running it, then explain why. No extra package is needed.</p><div class="program-download"><span>tricky_state_in_python_and_selenium.py</span><a class="button" href="../../programs/tricky_state_in_python_and_selenium.py" download>Download tricky program ↓</a></div><div class="code-block"><div class="code-bar"><span>TRICKY PYTHON PROGRAM</span><button class="copy-code" type="button">Copy code</button></div><pre><code>state = &quot;signed out&quot;
+observed_status = &quot;Invalid credentials&quot;
+if observed_status == &quot;Welcome, learner!&quot;:
+    state = &quot;signed in&quot;
+print(state)</code></pre></div><p class="source-intro">Run: <code>python tricky_state_in_python_and_selenium.py</code></p><details class="answer-panel"><summary>Reveal the output and explanation</summary><div class="output"><span>EXPECTED OUTPUT</span><pre>signed out</pre></div><p>Only a successful observed result justifies the state transition. Clicking the login button alone does not.</p><div class="tricky-challenge"><strong>Try one more variation</strong><p>Change one value or replace the collaborator. Predict the new result before running again.</p></div></details></section>
+<section id="interview"><div class="eyebrow">INTERVIEW PRACTICE · EXPLAIN THE WHY</div><h2>Talk it through.</h2><p class="source-intro">Answer in your own words first. Then check the explanation and connect it to the programs above.</p><details class="answer-panel"><summary>State versus Strategy?</summary><p>State models behavior and transitions tied to the context’s lifecycle. Strategy supplies an interchangeable algorithm chosen by the client. State objects often choose the next state; strategies normally do not.</p></details><details class="answer-panel"><summary>Which common mistake can affect this program or test?</summary><p>A model’s state is not proof of the browser’s state. Observe the actual page before updating the model, and define allowed transitions. A small enum may be enough for simple cases.</p></details><a class="text-link" href="../../interview.html">Explore all interview topics →</a></section>
+<section id="sources"><h2>Go a little deeper.</h2><p class="source-intro">Original explanations and programs. These references offer further details and API documentation.</p><ul class="source-list"><li><a href="https://www.informit.com/store/design-patterns-elements-of-reusable-object-oriented-9780321770462" target="_blank" rel="noopener noreferrer">Design Patterns — original publisher and 23-pattern catalog <span aria-hidden="true">↗</span></a></li><li><a href="https://python-patterns.guide/" target="_blank" rel="noopener noreferrer">Python Patterns Guide — Brandon Rhodes <span aria-hidden="true">↗</span></a></li><li><a href="https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/" target="_blank" rel="noopener noreferrer">Selenium page objects <span aria-hidden="true">↗</span></a></li></ul><p class="source-note">Video timestamps follow your supplied list. External resources need internet access.</p></section></div><nav class="lesson-paging" aria-label="Lesson navigation"><a href="../../lessons/observer-in-python-and-selenium/index.html"><small>← PREVIOUS IN THIS TRACK</small><strong>Observer in Python and Selenium</strong></a><a href="../../lessons/strategy-in-python-and-selenium/index.html"><small>NEXT IN THIS TRACK →</small><strong>Strategy in Python and Selenium</strong></a></nav></article><aside class="reading-outline" aria-label="On this page"><div class="eyebrow">IN THIS LESSON</div><a href="#idea">The idea</a><a href="#daily-use">Daily use & tradeoffs</a><a href="#example">Complete program</a><a href="#walkthrough">Step-by-step reading</a><a href="#selenium-example">Selenium companion</a><a href="#practice">Practice task</a><a href="#tricky">Tricky program</a><a href="#interview">Interview questions</a><a href="#sources">References</a><div class="outline-tip"><span aria-hidden="true">✳</span><strong>New to Python?</strong><p>Start with what a file, terminal, variable and function mean. Then come back and try this program.</p><a href="../../start.html">Start from zero →</a></div></aside></div></main><footer><a class="footer-brand" href="../../index.html">way2python.</a><span>Learn deeply. Automate confidently.</span><a href="../../resources.html">Sources & credits ↗</a><a href="../../downloads.html">Take it with you ↗</a><small>Original lessons · References checked 12 October 2026</small></footer></div><div class="toast" role="status" aria-live="polite"></div></body></html>
